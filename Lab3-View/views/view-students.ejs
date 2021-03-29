@@ -1,0 +1,40 @@
+<%- include("includes/head") %>
+    <% if(students.length===0){%>
+        <h1>No Students</h1>
+        <% }else{ %>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let student of students){ %>
+                        <tr>
+                            <td>
+                                <%= student.name %>
+                            </td>
+                            <td>
+                                <%= student.phone %>
+                            </td>
+                            <td>
+                                <%= student.address %>
+                            </td>
+                            <td>
+                                <a href="<%= `/students/edit/${student._id}` %>" class="btn btn-warning">edit</a>
+                            </td>
+                            <td>
+                                <a href="<%= `/students/del/${student._id}` %>" class="btn btn-danger">del</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+            <% } %>
+                <a href="/" class="btn btn-primary">Back</a>
+                <%- include("includes/tail") %>
